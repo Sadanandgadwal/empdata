@@ -3,6 +3,7 @@ const multer = require("multer");
 const filterData = require("./filterData");
 const filterData2 = require("./filterData2");
 const test = require("./test");
+const cors = require("cors");
 var storage = multer.diskStorage({
   destination: function (req, file, callback) {
     callback(null, "./uploads");
@@ -14,6 +15,13 @@ var storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 const app = express();
+
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+
 const port = 5000;
 
 app.get("/", function (req, res) {
