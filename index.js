@@ -30,14 +30,20 @@ app.get("/", function (req, res) {
 
 app.post("/acti", upload.single("myfile"), function (req, res) {
   const formData = req.body;
-  var filteredData = filterData2(
-    formData.originalname,
-    formData.stdt,
-    formData.endt,
-    formData.empno
-  );
-  console.log(filteredData);
-  res.end("File is uploaded successfully!");
+
+  try {
+    var filteredData = filterData2(
+      formData.originalname,
+      formData.stdt,
+      formData.endt,
+      formData.empno
+    );
+    res
+      .status(200)
+      .send({ sucess: "File is uploaded successfully!", data: filteredData });
+  } catch (e) {
+    res.status(400).send({ error: "something went wrong" });
+  }
 });
 
 app.listen(port, () => {
