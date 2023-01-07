@@ -22,7 +22,7 @@ app.use(
   })
 );
 
-const port = 5000;
+const port = proces.env.PORT;
 
 app.get("/", function (req, res) {
   res.sendFile("index.html", { root: __dirname });
