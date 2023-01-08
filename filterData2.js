@@ -37,7 +37,7 @@ module.exports = (filename, stdt, endt, empno) => {
     var entryTime = new Date(sortedArray[0]);
     entryTime = moment(entryTime, "hh:mm:ss A").format("HH:mm:ss");
     var exitTime = new Date(sortedArray[sortedArray.length - 1]);
-    exitTime = moment(exitTime, "hh:mm:ss A").format("HH:mm:ss");
+    exitTime = moment(exitTime, "hh:mm:ss A").format("hh:mm:ss");
     var totalHours = parseInt(exitTime) - parseInt(entryTime);
     finalResult.push({
       date: new Date(key).toLocaleDateString(),
